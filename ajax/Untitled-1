@@ -1,0 +1,32 @@
+<?php  
+if(isset($_POST['submit'])){
+    $firstname=$_POST['fname'];
+    $lastname=$_POST['lname'];
+    $email=$_POST['email'];  
+    $phone=$_POST['phone'];
+    $password=$_POST['password'];
+    $cpassword=$_POST['cpassword'];
+    $rcode=$_POST['rcode'];
+    // $en_ps = base64_encode($passcode);
+     $sql="INSERT INTO `register`( `user_name`, `last_name`, `email`, `phone`, `password`, `cpassword`, `rcode`) VALUES ('$firstname','$lastname','$email','$phone','$password','$cpassword','$rcode')";
+    $result=$db->query($sql);
+    if($result==TRUE){
+        $sql = "SELECT * FROM `register` WHERE  email = '$email' AND  password = '$password'";
+         $result = $db->query($sql);
+        //  echo '<pre>'.print_r($result).'</pre>';
+         $user_details = mysqli_fetch_assoc($result);
+         $_SESSION['user_details'] = $user_details;
+        //  echo '<pre>'.print_r($_SESSION).'</pre>';
+         if($result->num_rows==1){    
+        //  header("Location: shop.php");
+        echo"Login Successfully";
+           }
+         else {
+            // echo "ERROR: Could not able to execute $sql. " . $db->error;
+        }
+    }
+        else{
+            echo "ERROR: Could not able to execute $sql. " . $db->error;
+        }
+}
+?>
