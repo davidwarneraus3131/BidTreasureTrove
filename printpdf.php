@@ -142,8 +142,9 @@ class pdf extends fpdf
          WHERE `order_id` = '$id'";
     
    
-        // $db = new mysqli('localhost', 'root', '', 'treasure');
-        $db = mysqli_connect("localhost","root","","treasure");
+      
+        // $db = mysqli_connect("localhost","root","","treasure");
+        $db = mysqli_connect("localhost","u541379268_treasure","Teckzy@123","u541379268_treasure");
                 // $db = mysqli_dbnect("localhost","u541379268_bababalaknath","Teckzy@123","u541379268_bababalaknath");
 
        

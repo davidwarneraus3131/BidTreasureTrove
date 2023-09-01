@@ -272,13 +272,11 @@ session_start(); ?>
                                             <a href="mens.php?cat_id=<?php echo $category_id ?>" class="nav-link"><?php echo $category_name; ?></a>
                                             <ul class="dropdown-menu">
                                                 <?php
-
                                                 $sc_id = $row['category_id'];
-
                                                 $sqls = "SELECT *
-                                FROM `bid_product_details`
-                                JOIN `sub_category` ON `bid_product_details`.`category_id` = `sub_category`.`category_id`
-                                WHERE `bid_product_details`.`category_id` = '$sc_id'";
+                                                FROM `bid_product_details`
+                                                JOIN `sub_category` ON `bid_product_details`.`category_id` = `sub_category`.`category_id`
+                                                WHERE `bid_product_details`.`category_id` = '$sc_id'";
                                                 // echo $sql;
                                                 $results = $db->query($sqls);
                                                 //  print_r($results);
@@ -293,9 +291,6 @@ session_start(); ?>
                                         </li> <?php } ?>
                                 </ul>
 
-
-
-
                             <li class="nav-item">
 
                                 <a href="buy.php" class="nav-link">
@@ -304,7 +299,6 @@ session_start(); ?>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <?php
-
                                     $sql = "SELECT * FROM `category` LIMIT 10 ";
                                     $result = $db->query($sql);
                                     while ($row = mysqli_fetch_assoc($result)) {
@@ -355,9 +349,7 @@ session_start(); ?>
                                             <a href="mens.php?cat_id=<?php echo $category_id ?>" class="nav-link"><?php echo $category_name; ?></a>
                                             <ul class="dropdown-menu">
                                                 <?php
-
                                                 $sc_id = $row['category_id'];
-
                                                 $sqls = "SELECT *
                                 FROM `deal_product_details`
                                 JOIN `sub_category` ON `deal_product_details`.`category_name` = `sub_category`.`category_id`
@@ -417,10 +409,6 @@ session_start(); ?>
                                         </li>
                                     </ul>
                                 </li> -->
-
-
-
-
                                 <li class="nav-item">
                                     <a href="profile-authentication.php"><i class="flaticon-user"></i> Register</a>
                                     <i class="ri-arrow-down-s-line"></i>
@@ -428,7 +416,6 @@ session_start(); ?>
                                         <li class="nav-item">
                                             <a href="profile-authentication.php" class="nav-link">User
                                             </a>
-
                                         </li>
                                         <li class="nav-item">
                                             <a href="vendor_page.php" class="nav-link">Vendor
@@ -593,70 +580,72 @@ session_start(); ?>
                                     } ?> My Account </a>
                                 <ul class="dropdown-menu">
 
-                                <a class="dropdown-item" href="savelife.php">
-                                            Save a Life
-                                        </a>
-                                        <a class="dropdown-item" href="paymenthistory.php">
-                                            Payment History
-                                        </a>                                       
-                                        <a class="dropdown-item" href="winning_bid.php">
-                                            Winning Bid
-                                        </a>
-                                        <a class="dropdown-item" href="winning_unbid.php">
-                                             Bid unpaid list
-                                        </a> 
-                                        <?php if (isset($_SESSION['user_details'])) { ?>
+                                    <a class="dropdown-item" href="savelife.php">
+                                        Save a Life
+                                    </a>
+                                    <a class="dropdown-item" href="paymenthistory.php">
+                                        Payment History
+                                    </a>
+                                    <a class="dropdown-item" href="winning_bid.php">
+                                        Winning Bid
+                                    </a>
+                                    <a class="dropdown-item" href="winning_unbid.php">
+                                        Bid unpaid list
+                                    </a>
+                                    <?php if (isset($_SESSION['user_details'])) { ?>
                                         <a class="dropdown-item" href="user/deal.php?type=hot">
-                                             Upload Deal Products
+                                            Upload Deal Products
                                         </a>
-                                        <?php }?>
-                                        <a class="dropdown-item" href="wishlist.php">
-                                            Wish List
-                                        </a>
-                                        <a class="dropdown-item" href="#">
-                                            Setting
-                                        </a>
-                                        <li class="nav-item" id="ddd" style="color:#1657cb">
-                                           Invite Friends
-                                           <ul class="dropdown-menu" style="right: -20px;">
-                                        <?php $url ="https://treasuretroove.teckzy.co.in/"; ?>
+                                    <?php } ?>
+                                    <a class="dropdown-item" href="wishlist.php">
+                                        Wish List
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        Setting
+                                    </a>
+                                    <li class="nav-item" id="ddd" style="color:#1657cb">
+                                        Invite Friends
+                                        <ul class="dropdown-menu" style="right: -20px;">
+                                            <?php $url = "https://treasuretroove.teckzy.co.in/"; ?>
 
-                                        <style>
-                                            .ss{
-                                                display: flex;
-                                            }
-                                            #ddd{
-                                                color: #2F4858;
-                                                font-size: var(--font-size);
-                                                font-weight: 600;
+                                            <style>
+                                                .ss {
+                                                    display: flex;
+                                                }
 
-                                                padding-right: 0px;
-                                                padding-top: 10px;
-                                                padding-bottom: 10px;
-                                                -webkit-transition: var(--transition);
-                                                transition: var(--transition);
-                                                font-family: var(--heading-font-family);
-                                            }
-                                        
-                                        </style>
-                        <p><b style="color:#1657cb"><u>Share Link  At:</u></b></p>
-                      <div class="ss">      
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode("Welcome to Treasure Trove: " . $url); ?>">
-                    <img src="assets/images/facebook.png" alt="">
-                        </a>
-                        <a href="https://www.instagram.com/share?url=<?php echo urlencode("Welcome to Treasure Trove: " . $url); ?>">
-                            <img src="assets/images/instagram.png" alt="">
-                        </a>
-                        <a href="https://api.whatsapp.com/send?text=<?php echo urlencode("Welcome to Treasure Trove: " . $url); ?>">
-                            <img src="assets/images/whatsapp.png" alt="">
-                        </a>
-                        <a href="mailto:?subject=Check%20out%20this%20page&body<?php echo urlencode("Welcome to Treasure Trove: " . $url); ?>">
-                            <img src="assets/images/email.png" alt="">
-                        </a>
-                        </div> </ul></li>
-                                        <a class="dropdown-item" style="border-top: 1px solid black;" href="log_out.php">
-                                            Logout
-                                        </a>
+                                                #ddd {
+                                                    color: #2F4858;
+                                                    font-size: var(--font-size);
+                                                    font-weight: 600;
+
+                                                    padding-right: 0px;
+                                                    padding-top: 10px;
+                                                    padding-bottom: 10px;
+                                                    -webkit-transition: var(--transition);
+                                                    transition: var(--transition);
+                                                    font-family: var(--heading-font-family);
+                                                }
+                                            </style>
+                                            <p><b style="color:#1657cb"><u>Share Link At:</u></b></p>
+                                            <div class="ss">
+                                                <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode("Welcome to Treasure Trove: " . $url); ?>">
+                                                    <img src="assets/images/facebook.png" alt="">
+                                                </a>
+                                                <a href="https://www.instagram.com/share?url=<?php echo urlencode("Welcome to Treasure Trove: " . $url); ?>">
+                                                    <img src="assets/images/instagram.png" alt="">
+                                                </a>
+                                                <a href="https://api.whatsapp.com/send?text=<?php echo urlencode("Welcome to Treasure Trove: " . $url); ?>">
+                                                    <img src="assets/images/whatsapp.png" alt="">
+                                                </a>
+                                                <a href="mailto:?subject=Check%20out%20this%20page&body<?php echo urlencode("Welcome to Treasure Trove: " . $url); ?>">
+                                                    <img src="assets/images/email.png" alt="">
+                                                </a>
+                                            </div>
+                                        </ul>
+                                    </li>
+                                    <a class="dropdown-item" style="border-top: 1px solid black;" href="log_out.php">
+                                        Logout
+                                    </a>
 
                     </div>
                     </li>
@@ -667,10 +656,6 @@ session_start(); ?>
         </div>
     </div>
     </div>
-
-
-
-
     <style>
         .nav-items {
             display: inline-block;
@@ -687,12 +672,11 @@ session_start(); ?>
 
     <body>
         <!-- Start Profile Authentication Area -->
-        <h3 class="text-center" style="margin-top:29px;font-weight:500" >User Login/Register</h3>
+        <h3 class="text-center" style="margin-top:29px;font-weight:500">User Login/Register</h3>
         <div class="profile-authentication-area ptb-100">
             <div class="container" style="margin-top:29px;">
                 <div class="profile-authentication-tabs">
                     <div class="authentication-tabs-list">
-
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link" id="register-tab" data-bs-toggle="tab" href="#user_log" role="tab" aria-controls="register">Login</a>
@@ -701,7 +685,8 @@ session_start(); ?>
                                 <a class="nav-link active" id="login-tab" data-bs-toggle="tab" href="#register" role="tab" aria-controls="login">Register</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link"  href="forgot_user_pasword.php" role="tab" >Reset Password</a>                            </li>
+                                <a class="nav-link" href="forgot_user_pasword.php" role="tab">Reset Password</a>
+                            </li>
                         </ul>
                     </div>
                     <!-- login page -->
@@ -726,8 +711,238 @@ session_start(); ?>
                                         <input type="password" name="cpassword" class="form-control" placeholder="Confirm Password" id="cpassword">
                                         <p id="cpass_error" style="color:red;"></p>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="text" name="mobile" class="form-control" placeholder=" Mobile Number" id="mobile">
+
+
+                                    <!-- for country codes in country -->
+
+                                    <div class="form-group" style="display:flex;">
+
+                                        <select name="country_code" class="form-control" style="width: 30%;">
+                                            <?php
+                                            $countryCodes = [
+
+
+                                                '1' => 'USA (+1)',
+                                                '213' => 'Algeria (+213)',
+                                                '376' => 'Andorra (+376)',
+                                                '244' => 'Angola (+244)',
+                                                '1264' => 'Anguilla (+1264)',
+                                                '1268' => 'Antigua & Barbuda (+1268)',
+                                                '54' => 'Argentina (+54)',
+                                                '374' => 'Armenia (+374)',
+                                                '297' => 'Aruba (+297)',
+                                                '61' => 'Australia (+61)',
+                                                '43' => 'Austria (+43)',
+                                                '994' => 'Azerbaijan (+994)',
+                                                '1242' => 'Bahamas (+1242)',
+                                                '973' => 'Bahrain (+973)',
+                                                '880' => 'Bangladesh (+880)',
+                                                '1246' => 'Barbados (+1246)',
+                                                '375' => 'Belarus (+375)',
+                                                '32' => 'Belgium (+32)',
+                                                '501' => 'Belize (+501)',
+                                                '229' => 'Benin (+229)',
+                                                '1441' => 'Bermuda (+1441)',
+                                                '975' => 'Bhutan (+975)',
+                                                '591' => 'Bolivia (+591)',
+                                                '387' => 'Bosnia Herzegovina (+387)',
+                                                '267' => 'Botswana (+267)',
+                                                '55' => 'Brazil (+55)',
+                                                '673' => 'Brunei (+673)',
+                                                '359' => 'Bulgaria (+359)',
+                                                '226' => 'Burkina Faso (+226)',
+                                                '257' => 'Burundi (+257)',
+                                                '855' => 'Cambodia (+855)',
+                                                '237' => 'Cameroon (+237)',
+                                                '238' => 'Cape Verde Islands (+238)',
+                                                '1345' => 'Cayman Islands (+1345)',
+                                                '236' => 'Central African Republic (+236)',
+                                                '56' => 'Chile (+56)',
+                                                '86' => 'China (+86)',
+                                                '57' => 'Colombia (+57)',
+                                                '269' => 'Comoros (+269)',
+                                                '242' => 'Congo (+242)',
+                                                '682' => 'Cook Islands (+682)',
+                                                '506' => 'Costa Rica (+506)',
+                                                '385' => 'Croatia (+385)',
+                                                '53' => 'Cuba (+53)',
+                                                '90392' => 'Cyprus North (+90392)',
+                                                '357' => 'Cyprus South (+357)',
+                                                '42' => 'Czech Republic (+42)',
+                                                '45' => 'Denmark (+45)',
+                                                '253' => 'Djibouti (+253)',
+                                                '1809' => 'Dominica (+1809)',
+                                                '1809' => 'Dominican Republic (+1809)',
+                                                '593' => 'Ecuador (+593)',
+                                                '20' => 'Egypt (+20)',
+                                                '503' => 'El Salvador (+503)',
+                                                '240' => 'Equatorial Guinea (+240)',
+                                                '291' => 'Eritrea (+291)',
+                                                '372' => 'Estonia (+372)',
+                                                '251' => 'Ethiopia (+251)',
+                                                '500' => 'Falkland Islands (+500)',
+                                                '298' => 'Faroe Islands (+298)',
+                                                '679' => 'Fiji (+679)',
+                                                '358' => 'Finland (+358)',
+                                                '33' => 'France (+33)',
+                                                '594' => 'French Guiana (+594)',
+                                                '689' => 'French Polynesia (+689)',
+                                                '241' => 'Gabon (+241)',
+                                                '220' => 'Gambia (+220)',
+                                                '7880' => 'Georgia (+7880)',
+                                                '49' => 'Germany (+49)',
+                                                '233' => 'Ghana (+233)',
+                                                '350' => 'Gibraltar (+350)',
+                                                '30' => 'Greece (+30)',
+                                                '299' => 'Greenland (+299)',
+                                                '1473' => 'Grenada (+1473)',
+                                                '590' => 'Guadeloupe (+590)',
+                                                '671' => 'Guam (+671)',
+                                                '502' => 'Guatemala (+502)',
+                                                '224' => 'Guinea (+224)',
+                                                '245' => 'Guinea - Bissau (+245)',
+                                                '592' => 'Guyana (+592)',
+                                                '509' => 'Haiti (+509)',
+                                                '504' => 'Honduras (+504)',
+                                                '852' => 'Hong Kong (+852)',
+                                                '36' => 'Hungary (+36)',
+                                                '354' => 'Iceland (+354)',
+                                                '91' => 'India (+91)',
+                                                '62' => 'Indonesia (+62)',
+                                                '98' => 'Iran (+98)',
+                                                '964' => 'Iraq (+964)',
+                                                '353' => 'Ireland (+353)',
+                                                '972' => 'Israel (+972)',
+                                                '39' => 'Italy (+39)',
+                                                '1876' => 'Jamaica (+1876)',
+                                                '81' => 'Japan (+81)',
+                                                '962' => 'Jordan (+962)',
+                                                '7' => 'Kazakhstan (+7)',
+                                                '254' => 'Kenya (+254)',
+                                                '686' => 'Kiribati (+686)',
+                                                '850' => 'Korea North (+850)',
+                                                '82' => 'Korea South (+82)',
+                                                '965' => 'Kuwait (+965)',
+                                                '996' => 'Kyrgyzstan (+996)',
+                                                '856' => 'Laos (+856)',
+                                                '371' => 'Latvia (+371)',
+                                                '961' => 'Lebanon (+961)',
+                                                '266' => 'Lesotho (+266)',
+                                                '231' => 'Liberia (+231)',
+                                                '218' => 'Libya (+218)',
+                                                '417' => 'Liechtenstein (+417)',
+                                                '370' => 'Lithuania (+370)',
+                                                '352' => 'Luxembourg (+352)',
+                                                '853' => 'Macao (+853)',
+                                                '389' => 'Macedonia (+389)',
+                                                '261' => 'Madagascar (+261)',
+                                                '265' => 'Malawi (+265)',
+                                                '60' => 'Malaysia (+60)',
+                                                '960' => 'Maldives (+960)',
+                                                '223' => 'Mali (+223)',
+                                                '356' => 'Malta (+356)',
+                                                '692' => 'Marshall Islands (+692)',
+                                                '596' => 'Martinique (+596)',
+                                                '222' => 'Mauritania (+222)',
+                                                '269' => 'Mayotte (+269)',
+                                                '52' => 'Mexico (+52)',
+                                                '691' => 'Micronesia (+691)',
+                                                '373' => 'Moldova (+373)',
+                                                '377' => 'Monaco (+377)',
+                                                '976' => 'Mongolia (+976)',
+                                                '1664' => 'Montserrat (+1664)',
+                                                '212' => 'Morocco (+212)',
+                                                '258' => 'Mozambique (+258)',
+                                                '95' => 'Myanmar (+95)',
+                                                '264' => 'Namibia (+264)',
+                                                '674' => 'Nauru (+674)',
+                                                '977' => 'Nepal (+977)',
+                                                '31' => 'Netherlands (+31)',
+                                                '687' => 'New Caledonia (+687)',
+                                                '64' => 'New Zealand (+64)',
+                                                '505' => 'Nicaragua (+505)',
+                                                '227' => 'Niger (+227)',
+                                                '234' => 'Nigeria (+234)',
+                                                '683' => 'Niue (+683)',
+                                                '672' => 'Norfolk Islands (+672)',
+                                                '670' => 'Northern Marianas (+670)',
+                                                '47' => 'Norway (+47)',
+                                                '968' => 'Oman (+968)',
+                                                '680' => 'Palau (+680)',
+                                                '507' => 'Panama (+507)',
+                                                '675' => 'Papua New Guinea (+675)',
+                                                '595' => 'Paraguay (+595)',
+                                                '51' => 'Peru (+51)',
+                                                '63' => 'Philippines (+63)',
+                                                '48' => 'Poland (+48)',
+                                                '351' => 'Portugal (+351)',
+                                                '1787' => 'Puerto Rico (+1787)',
+                                                '974' => 'Qatar (+974)',
+                                                '262' => 'Reunion (+262)',
+                                                '40' => 'Romania (+40)',
+                                                '7' => 'Russia (+7)',
+                                                '250' => 'Rwanda (+250)',
+                                                '378' => 'San Marino (+378)',
+                                                '239' => 'Sao Tome & Principe (+239)',
+                                                '966' => 'Saudi Arabia (+966)',
+                                                '221' => 'Senegal (+221)',
+                                                '381' => 'Serbia (+381)',
+                                                '248' => 'Seychelles (+248)',
+                                                '232' => 'Sierra Leone (+232)',
+                                                '65' => 'Singapore (+65)',
+                                                '421' => 'Slovak Republic (+421)',
+                                                '386' => 'Slovenia (+386)',
+                                                '677' => 'Solomon Islands (+677)',
+                                                '252' => 'Somalia (+252)',
+                                                '27' => 'South Africa (+27)',
+                                                '34' => 'Spain (+34)',
+                                                '94' => 'Sri Lanka (+94)',
+                                                '290' => 'St. Helena (+290)',
+                                                '1869' => 'St. Kitts (+1869)',
+                                                '1758' => 'St. Lucia (+1758)',
+                                                '249' => 'Sudan (+249)',
+                                                '597' => 'Suriname (+597)',
+                                                '268' => 'Swaziland (+268)',
+                                                '46' => 'Sweden (+46)',
+                                                '41' => 'Switzerland (+41)',
+                                                '963' => 'Syria (+963)',
+                                                '886' => 'Taiwan (+886)',
+                                                '7' => 'Tajikstan (+7)',
+                                                '66' => 'Thailand (+66)',
+                                                '228' => 'Togo (+228)',
+                                                '676' => 'Tonga (+676)',
+                                                '1868' => 'Trinidad & Tobago (+1868)',
+                                                '216' => 'Tunisia (+216)',
+                                                '90' => 'Turkey (+90)',
+                                                '7' => 'Turkmenistan (+7)',
+                                                '993' => 'Turkmenistan (+993)',
+                                                '1649' => 'Turks & Caicos Islands (+1649)',
+                                                '688' => 'Tuvalu (+688)',
+                                                '256' => 'Uganda (+256)',
+                                                '380' => 'Ukraine (+380)',
+                                                '971' => 'United Arab Emirates (+971)',
+                                                '598' => 'Uruguay (+598)',
+                                                '7' => 'Uzbekistan (+7)',
+                                                '678' => 'Vanuatu (+678)',
+                                                '379' => 'Vatican City (+379)',
+                                                '58' => 'Venezuela (+58)',
+                                                '84' => 'Vietnam (+84)',
+                                                '84' => 'Virgin Islands - British (+1284)',
+                                                '84' => 'Virgin Islands - US (+1340)',
+                                                '681' => 'Wallis & Futuna (+681)',
+                                                '969' => 'Yemen (North)(+969)',
+                                                '967' => 'Yemen (South)(+967)',
+                                                '260' => 'Zambia (+260)',
+                                                '263' => 'Zimbabwe (+263)',
+
+                                            ];
+
+                                            foreach ($countryCodes as $code => $label) {
+                                                echo '<option value="' . $code . '">' . $label . '</option>';
+                                            }
+                                            ?>
+                                        </select>
+                                        <input type="text" name="mobile" class="form-control" placeholder="Mobile Number" id="mobile">
                                         <p id="mobile_error" style="color:red;"></p>
                                     </div>
                                     <div class="form-group">
@@ -742,7 +957,6 @@ session_start(); ?>
                                         <input type="text" name="ssn" class="form-control" placeholder="Social Security Number" id="">
                                         <p id="r" style="color:red;"></p>
                                     </div>
-
                                     <div class="form-group">
                                         <select name="country" class="form-control" onChange="getSubcat(this.value);" style="width: 100%; padding: 0.375rem 0.75rem;    border-color: #ced4da;">
                                             <option value="">Select countries</option>
@@ -787,13 +1001,6 @@ session_start(); ?>
                                     </div>
                                     <button type="submit" name="register" class="default-btn">Register <i class="flaticon-send"></i></button>
                                 </form>
-                                <!-- <span class="sub-title"><span>Or</span></span> -->
-                                <!-- <div class="login-with-account">
-                                    <ul>
-                                        <li><a href="#" class="facebook">Log In with Facebook <i class="ri-facebook-line"></i></a></li>
-                                        <li><a href="#" class="google">Log In with Google <i class="ri-google-line"></i></a></li>
-                                    </ul>
-                                </div> -->
                             </div>
                             <script src="./assets/js/jquery.min.js"></script>
                             <script>
@@ -842,13 +1049,16 @@ session_start(); ?>
                                             document.getElementById('cpass_error').innerHTML = "";
                                         }
                                         // Mobile Number Validation
-                                        var mobilePattern = /^[6-9]\d{9}$/;
+                                        var mobilePattern = /^[6-9]\d{5,11}$/;
+                                        var mobile = $('#mobile').val(); // Assuming you retrieve the mobile number from an input field
+
                                         if (mobile == "" || !mobilePattern.test(mobile)) {
-                                            $('#mobile_error').html("Please enter a valid 10-digit mobile number starting with 6-9");
+                                            $('#mobile_error').html("Please enter a valid mobile number between 6 to 12 digits ");
                                             event.preventDefault();
                                         } else {
                                             $('#mobile_error').html("");
                                         }
+
                                         if (!isChecked) {
                                             // alert("Please accept the terms and conditions.");
                                             document.getElementById('test_error').innerHTML = "Please accept the terms and conditions.";
@@ -872,6 +1082,7 @@ session_start(); ?>
                                 $country = $_POST['country'];
                                 $state = $_POST['state'];
                                 $city = $_POST['city'];
+                                $country_code = $_POST['country_code'];
                                 $image = $_FILES['image']['name'];
 
                                 // Check the file extension
@@ -897,10 +1108,9 @@ session_start(); ?>
                                 if ($emailCount > 0) {
                                     echo "<script>alert('Email already exists. Please enter a different email.');</script>";
                                 } else {
-                                    $sql = "INSERT INTO `user_details`(`user_name`, `mobile_number`, `email_address`, `password`, `cpassword`, `dob`, `ssn_no`, `country`, `state`, `city`, `zipcode`, `user_img`) VALUES ('$firstname','$mobile','$email','$password','$cpassword',' $dob ','$ssn','$country','$state','$city','$zipcode','$image')";
+                                    $sql = "INSERT INTO `user_details`(`user_name`,  `email_address`,country_code,`mobile_number`, `password`, `cpassword`, `dob`, `ssn_no`, `country`, `state`, `city`, `zipcode`, `user_img`) 
+                                    VALUES ('$firstname','$email','$country_code','$mobile','$password','$cpassword',' $dob ','$ssn','$country','$state','$city','$zipcode','$image')";
                                     $result = $db->query($sql);
-
-
 
                                     if ($result == TRUE) {
                                         echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
@@ -915,7 +1125,7 @@ session_start(); ?>
                                                 window.location.href = "bid.php";
                                             });
                                         </script>';
-                                    }else {
+                                    } else {
                                         // Registration failed
                                         echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
                                         echo '<script>
@@ -927,7 +1137,6 @@ session_start(); ?>
                                             });
                                         </script>';
                                     }
-                                    
                                 }
                             }
                             ?>
@@ -955,7 +1164,7 @@ session_start(); ?>
                                     </div>
                                     <button type="submit" name="login_button" id="login_button" value="login" class="default-btn">Log In <i class="flaticon-send"></i></button>
                                 </form>
-                              
+
                             </div>
                         </div>
                         <div class="tab-pane fade" id="reset-password" role="tabpanel">
@@ -976,62 +1185,63 @@ session_start(); ?>
                                     <button type="submit" name="reset_password" class="default-btn"> Submit<i class="flaticon-send"></i></button>
                                 </form>
 
-                                <?php 
+                                <?php
 
 
 
-// Assuming $db is your database connection variable.
+                                // Assuming $db is your database connection variable.
 
-// Step 1: Generate OTP
-function generateOTP() {
-    return rand(100000, 999999); // Generate a random 6-digit OTP
-}
+                                // Step 1: Generate OTP
+                                function generateOTP()
+                                {
+                                    return rand(100000, 999999); // Generate a random 6-digit OTP
+                                }
 
-if (isset($_POST['reset_password'])) {
-    $email = $_POST['email'];
+                                if (isset($_POST['reset_password'])) {
+                                    $email = $_POST['email'];
 
-    // Step 2: Store the OTP in the database and its expiration time (optional).
+                                    // Step 2: Store the OTP in the database and its expiration time (optional).
 
-    // Generate OTP
-    $otp = generateOTP();
+                                    // Generate OTP
+                                    $otp = generateOTP();
 
-    // Store the OTP and its expiration time in the database table associated with the user (you need to create this table)
+                                    // Store the OTP and its expiration time in the database table associated with the user (you need to create this table)
 
-    // Step 3: Send the OTP to the user's email address.
-    $to = $email;
-    $subject = "Password Reset OTP";
-    $message = "Your OTP for password reset is: $otp";
-    $headers = "From: your_email@example.com"; // Replace with your actual email address or use a noreply address.
+                                    // Step 3: Send the OTP to the user's email address.
+                                    $to = $email;
+                                    $subject = "Password Reset OTP";
+                                    $message = "Your OTP for password reset is: $otp";
+                                    $headers = "From: your_email@example.com"; // Replace with your actual email address or use a noreply address.
 
-    // Send the email
-    $mail_sent = mail($to, $subject, $message, $headers);
+                                    // Send the email
+                                    $mail_sent = mail($to, $subject, $message, $headers);
 
-    if ($mail_sent) {
-        // Display a message indicating that the OTP has been sent to the user's email.
-        echo "An OTP has been sent to your email. Please check your inbox.";
-    } else {
-        echo "Failed to send OTP. Please try again later.";
-    }
-}
+                                    if ($mail_sent) {
+                                        // Display a message indicating that the OTP has been sent to the user's email.
+                                        echo "An OTP has been sent to your email. Please check your inbox.";
+                                    } else {
+                                        echo "Failed to send OTP. Please try again later.";
+                                    }
+                                }
 
-// Step 5: Verify OTP and Update Password
-if (isset($_POST['verify_otp'])) {
-    $email = $_POST['email'];
-    $otp_entered = $_POST['otp'];
-    $new_password = $_POST['new_password'];
+                                // Step 5: Verify OTP and Update Password
+                                if (isset($_POST['verify_otp'])) {
+                                    $email = $_POST['email'];
+                                    $otp_entered = $_POST['otp'];
+                                    $new_password = $_POST['new_password'];
 
-    // Step 4: Create a form for the user to enter the OTP and a new password.
-    // Verify the entered OTP against the stored OTP in the database.
+                                    // Step 4: Create a form for the user to enter the OTP and a new password.
+                                    // Verify the entered OTP against the stored OTP in the database.
 
-    // Retrieve the stored OTP from the database based on the user's email.
-    // Compare the entered OTP with the stored OTP.
-    // If the OTP matches, update the user's password in the database.
-    // You should also validate the new password for complexity (e.g., length, special characters, etc.).
+                                    // Retrieve the stored OTP from the database based on the user's email.
+                                    // Compare the entered OTP with the stored OTP.
+                                    // If the OTP matches, update the user's password in the database.
+                                    // You should also validate the new password for complexity (e.g., length, special characters, etc.).
 
-    // If the OTP is valid and the password is successfully updated, display a success message.
-    // Otherwise, display an error message.
-}
-?>
+                                    // If the OTP is valid and the password is successfully updated, display a success message.
+                                    // Otherwise, display an error message.
+                                }
+                                ?>
 
 
                             </div>
@@ -1060,8 +1270,8 @@ if (isset($_POST['verify_otp'])) {
                         success: function(response) {
                             if (response === 'success') {
                                 swal("", "Login Successfully.", "success");
-                                 
-                               
+
+
                             } else {
                                 // $('#login-message').html('Invalid email or password.');
                                 swal("", "Login Error.", "error");
@@ -1106,11 +1316,9 @@ if (isset($_POST['verify_otp'])) {
             }
         </style>
 
-       
-    
-        <script>
-           
 
+
+        <script>
             function selectCountry(val) {
                 $("#search-box").val(val);
                 $("#suggesstion-box").hide();
@@ -1118,32 +1326,33 @@ if (isset($_POST['verify_otp'])) {
         </script>
 
 
-<script>
-    function getSubcat(states) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("subcategory").innerHTML = this.responseText;
-           
+        <script>
+            function getSubcat(states) {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("subcategory").innerHTML = this.responseText;
+
+                    }
+
+                };
+                xhttp.open("GET", "get_subcat.php?cat_id=" + states, true);
+
+                xhttp.send();
             }
-            
-        };
-        xhttp.open("GET", "get_subcat.php?cat_id=" + states, true);
-      
-        xhttp.send();      
-    }
-    function getInnersubcat(cities) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("innercategory").innerHTML = this.responseText;
-           
+
+            function getInnersubcat(cities) {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("innercategory").innerHTML = this.responseText;
+
+                    }
+
+                };
+                xhttp.open("GET", "get_subcat.php?sub_cat_id=" + cities, true);
+
+                xhttp.send();
             }
-            
-        };
-        xhttp.open("GET", "get_subcat.php?sub_cat_id=" + cities, true);
-      
-        xhttp.send();      
-    }
-</script>
+        </script>
         <!-- go to back page end -->

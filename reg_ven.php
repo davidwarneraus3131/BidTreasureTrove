@@ -7,6 +7,7 @@ session_start();
         $image = $_FILES['vendor_image']['name'];
         $name = $_POST['fname'];
         $phone = $_POST['mobile'];
+        $country_code = $_POST['country_code'];
         $email = $_POST['email'];
         $password = $_POST['password'];
         $confirm_password = $_POST['cpassword'];
@@ -73,7 +74,7 @@ session_start();
         // VALUES ('$image', '$name', '$phone','$email', '$address','$pan_no', '$pan_card_img', '$aadhar_no', '$aadhar_front_img', '$aadhar_back_img', '$gst_no', '$gst_certificate_img','$password', '$confirm_password','$country','$state','$city','$zipcode')";
     
 
-       $sql="INSERT INTO `vendor_details` (`vendor_image`, `name`, `phone`, `email`, `address`, `pan_no`, `pan_card_img`, `aadhar_no`, `aadhar_front_img`, `aadhar_back_img`, `gst_no`, `gst_certificate_img`,`password`, `confirm_password`, `country`, `state`, `city`, `pincode`) VALUES ('$image', '$name', '$phone', '$email', '$address', '$pan_no', '$pan_card_img', '$aadhar_no', '$aadhar_front_img', '$aadhar_back_img', '$gst_no', '$gst_certificate_img','$password', '$confirm_password', '$country', '$state', '$city', '$zipcode')";
+       $sql="INSERT INTO `vendor_details` (`vendor_image`, `name`, `phone`, `email`, `country_code`,`address`, `pan_no`, `pan_card_img`, `aadhar_no`, `aadhar_front_img`, `aadhar_back_img`, `gst_no`, `gst_certificate_img`,`password`, `confirm_password`, `country`, `state`, `city`, `pincode`) VALUES ('$image', '$name', '$phone', '$email','$country_code', '$address', '$pan_no', '$pan_card_img', '$aadhar_no', '$aadhar_front_img', '$aadhar_back_img', '$gst_no', '$gst_certificate_img','$password', '$confirm_password', '$country', '$state', '$city', '$zipcode')";
        $result = $db->query($sql);
         if ($result == TRUE) {
             header("location:vendor_register.php");

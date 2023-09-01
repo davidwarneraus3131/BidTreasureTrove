@@ -8,9 +8,9 @@ class Database{
     // private $username = "u541379268_treasure";
     // private $password = "Teckzy@123";
     private $host = "localhost";
-    private $db_name = "treasure";
-    private $username = "root";
-    private $password = "";
+    private $db_name = "u541379268_treasure";
+    private $username = "Teckzy@123";
+    private $password = "u541379268_treasure";
     public $conn;
  
     // get the database connection
